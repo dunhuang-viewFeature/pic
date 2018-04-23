@@ -174,7 +174,7 @@ def getCenter(folders):
 			if imgList[i] == '.DS_Store':
 				continue
 			img = cv.imread(os.path.join(baseFile, folder, imgList[i]))
-			print('read img:' + imgList[i])
+			print(str(i) + '\nread img:' + imgList[i])
 			featurePath = os.path.join(outputFile, 'features', folder, imgList[i] + '.mat')
 			if os.path.exists(featurePath) != True:
 				imgfeatures = AffineTransAndGetFeatures(img)
