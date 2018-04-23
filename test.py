@@ -176,7 +176,7 @@ def getCenter(folders):
 			img = cv.imread(os.path.join(baseFile, folder, imgList[i]))
 			print('read img:' + imgList[i])
 			featurePath = os.path.join(outputFile, 'features', folder, imgList[i] + '.mat')
-			if os.exists(featurePath) != True:
+			if os.path.exists(featurePath) != True:
 				imgfeatures = AffineTransAndGetFeatures(img)
 				writeFeature(imgfeatures, folder, imgList[i])
 				print('write img feature of ' + featurePath)
