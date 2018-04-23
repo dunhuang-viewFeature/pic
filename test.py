@@ -162,6 +162,7 @@ def AffineTransAndGetFeatures(img, folder = '', fileName = '', saveImg = False):
 def getCenter(folders):
 	flag = 1
 	allFeature = None
+	outputFile = 'outputFile'
 	for i in range(0, len(folders)):
 		print('read img in ' + folders[i])
 		imgList = []
