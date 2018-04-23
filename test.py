@@ -9,9 +9,9 @@ import sys
 
 alpha = math.sqrt(2)
 # 聚类的类数
-cluster_num = 50;
+cluster_num = 512;
 baseFile = 'Dunhuang660'
-baseFile = 'test'
+# baseFile = 'test'
 
 # 验证文件夹的存在性，若不存在则新建
 def checkAndCreateFile(filePath):
@@ -166,17 +166,17 @@ def getCenter(folders):
 		print('read img in ' + folders[i])
 		imgList = []
 		folder = folders[i]
-		for root, dirs, files in os.walk(folder):
+		for root, dirs, files in os.walk(os.path.join(baseFile, folder)):
 			imgList = files
 
 		for i in range(0, len(imgList)):
 			if imgList[i] == '.DS_Store':
 				continue
-			img = cv.imread(os.path.join(folder, imgList[i]))
+			img = cv.imread(os.path.join(baseFile, folder, imgList[i]))
 			print('read img:' + imgList[i])
-			imgfeatures = AffineTransAndGetFeatures(img, folder, imgList[i])
+			imgfeatures = AffineTransAndGetFeatures(img)
 			writeFeature(imgfeatures, folder, imgList[i])
-			print('get img feature of ' + imgList[i] + ', shape:' + str(imgfeatures.shape))
+			print('get and write img feature of ' + imgList[i] + ', shape:' + str(imgfeatures.shape))
 			if flag == 1:
 				allFeature = imgfeatures
 				flag = 0
@@ -201,7 +201,7 @@ def trainCenter():
 		folderName = folders[i]
 		if folderName == '.DS_Store' or folderName[2:6] == 'test':
 			continue
-		trainFolders.append(os.path.join(baseFile, folderName))
+		trainFolders.append(folderName)
 		print(trainFolders)
 	getCenter(trainFolders)
 
@@ -325,6 +325,6 @@ def getHistogramOfAllImgs(Type):
 	print('save all pictures histograms succeed')
 
 
-# trainCenter()
-getHistogramOfAllImgs('test')
+trainCenter()
+# getHistogramOfAllImgs('test')
 print('done')
