@@ -174,9 +174,16 @@ def getCenter(folders):
 				continue
 			img = cv.imread(os.path.join(baseFile, folder, imgList[i]))
 			print('read img:' + imgList[i])
-			imgfeatures = AffineTransAndGetFeatures(img)
-			writeFeature(imgfeatures, folder, imgList[i])
-			print('get and write img feature of ' + imgList[i] + ', shape:' + str(imgfeatures.shape))
+			featurePath = os.path.join(outputFile, 'features', folder, imgList[i] + '.mat')
+			if os.exists(featurePath) != True:
+				imgfeatures = AffineTransAndGetFeatures(img)
+				writeFeature(imgfeatures, folder, imgList[i])
+				print('write img feature of ' + featurePath)
+			else:
+				featuresMat = scio.loadmat(featurePath)
+				imgfeatures = featuresMat['features']
+				print('load img feature of ' + featurePath)
+			print('get img feature of ' + imgList[i] + ', shape:' + str(imgfeatures.shape))
 			if flag == 1:
 				allFeature = imgfeatures
 				flag = 0
