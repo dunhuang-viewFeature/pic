@@ -300,9 +300,9 @@ def saveHistogram(histograms, labels, Type):
 	checkAndCreateFile(subFolder2)
 
 	# 保存直方图
-	scio.savemat(os.path.join(subFolder2, Type + '-histograms.mat'), {Type + 'Histograms': histograms})
+	scio.savemat(os.path.join(subFolder2, Type + '-histograms-' + str(cluster_num) + '.mat'), {Type + 'Histograms': histograms})
 	# 保存对应 label
-	scio.savemat(os.path.join(subFolder2, Type + '-labels.mat'), {Type + 'Labels': labels})
+	scio.savemat(os.path.join(subFolder2, Type + '-labels-' + str(cluster_num) + '.mat'), {Type + 'Labels': labels})
 	return
 
 # 计算所有图片的直方图
@@ -333,6 +333,6 @@ def getHistogramOfAllImgs(Type):
 	print('save all pictures histograms succeed')
 
 
-trainCenter()
-# getHistogramOfAllImgs('test')
+# trainCenter()
+getHistogramOfAllImgs('test')
 print('done')
