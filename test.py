@@ -314,7 +314,7 @@ def getHistogramOfAllImgs(Type):
 	flag = 1
 	# 保存所有图片的标号
 	labels = []
-	for i in range(0, 3):
+	for i in range(0, length):
 		print(imgList[i])
 		label, folder, fileName = imgList[i]
 		imgPath = os.path.join(baseFile, folder, fileName)
@@ -334,5 +334,5 @@ def getHistogramOfAllImgs(Type):
 
 
 # trainCenter()
-getHistogramOfAllImgs('test')
+getHistogramOfAllImgs('train')
 print('done')
