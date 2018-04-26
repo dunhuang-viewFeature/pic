@@ -334,5 +334,6 @@ def getHistogramOfAllImgs(Type):
 
 
 # trainCenter()
-getHistogramOfAllImgs('train')
+# getHistogramOfAllImgs('train')
+getHistogramOfAllImgs('test')
 print('done')
