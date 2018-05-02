@@ -333,7 +333,7 @@ def getHistogramOfAllImgs(Type):
 	print('save all pictures histograms succeed')
 
 
-# trainCenter()
-# getHistogramOfAllImgs('train')
+trainCenter()
+getHistogramOfAllImgs('train')
 getHistogramOfAllImgs('test')
 print('done')
