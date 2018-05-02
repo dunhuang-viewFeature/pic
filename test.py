@@ -9,7 +9,7 @@ import sys
 
 alpha = math.sqrt(2)
 # 聚类的类数
-cluster_num = 512;
+cluster_num = 1024;
 baseFile = 'Dunhuang660'
 # baseFile = 'test'
 
